@@ -1,5 +1,6 @@
 class BorrowersController < ApplicationController
 	before_action :require_login, except: [:create, :new]
+	before_action :require_current_borrower, only: [:show]
 	def new
 	end
 	def create

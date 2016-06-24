@@ -12,4 +12,11 @@ class ApplicationController < ActionController::Base
       redirect_to "/lenders/#{current_lender.id}" if current_lender != lender
     end
   end
+  def require_current_borrower
+    if session[:user_type] = 'borrower'
+      current_borrower = Borrower.find(session[:user_id])
+      borrower = Borrower.find(params[:id])
+      redirect_to "/borrowers/#{current_borrower.id}" if current_borrower != borrower
+    end
+  end
 end
