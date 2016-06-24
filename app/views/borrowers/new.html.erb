@@ -1,0 +1,93 @@
+<div class="col-md-6">
+	<h2>Lender</h2>
+	<form action="/lenders" method="post">
+	<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+		<div class="form-group">
+			<label for="lender_first_name">First Name</label>
+			<input type="text" id="lender_first_name" name="lender[first_name]" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="lender_last_name">Last Name</label>
+			<input type="text" id="lender_last_name" name="lender[last_name]" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="lender_email">Email</label>
+			<input type="text" id="lender_email" name="lender[email]" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="lender_balance">Balance ($)</label>
+			<input type="number" step="0.01" id="lender_balance" name="balance" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="lender_password">Password</label>
+			<input type="password" id="lender_password" name="lender[password]" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="lender_password_confirmation">Confirm Password</label>
+			<input type="password" id="lender_password_confirmation" name="lender[password_confirmation]" class="form-control">
+		</div>
+		<button type="submit" class="btn btn-default">Submit</button>
+	</form>
+	<a href="/sessions/new">Already have an account?  Click here to Log In!</a>
+	<% if flash[:lenders] %>
+		<% if flash[:lenders] %>
+			<% flash[:lenders].each do |error| %>
+				<p class="error"><%=error%></p>
+			<% end %>
+		<% end %>
+	<% end %>
+</div>
+<div class="col-md-6">
+	<h2>Borrower</h2>
+	<form action="/borrowers" method="post">
+		<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+		<div class="form-group">
+			<label for="borrower_first_name">First Name</label>
+			<input type="text" id="borrower_first_name" name="borrower[first_name]" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="borrower_last_name">Last Name</label>
+			<input type="text" id="borrower_last_name" name="borrower[last_name]" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="borrower_email">Email</label>
+			<input type="email" id="borrower_email" name="borrower[email]" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="borrower_amount_needed">Amount Needed ($)</label>
+			<input type="number" id="borrower_amount_needed" name="borrower[amount_needed]" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="borrower_reason">Reason</label>
+			<input type="text" id="borrower_reason" name="borrower[reason]" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="borrower_description">Description</label>
+			<input type="text" id="borrower_description" name="borrower[description]" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="borrower_password">Password</label>
+			<input type="password" id="borrower_password" name="borrower[password]" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="borrower_password_confirmation">Confirm Password</label>
+			<input type="password" id="borrower_password_confirmation" name="borrower[password_confirmation]" class="form-control">
+		</div>
+		<button type="submit" class="btn btn-default">Become a Borrower</button>
+	</form>
+	<a href="/sessions/new">Already have an account?  Click here to Log In!</a>
+	<% if flash[:borrowers] %>
+		<% if flash[:borrowers] %>
+			<% flash[:borrowers].each do |error| %>
+				<p class="error"><%=error%></p>
+			<% end %>
+		<% end %>
+	<% end %>
+</div>
+
+
+
+
+
+
+

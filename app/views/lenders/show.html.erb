@@ -1,0 +1,71 @@
+<div class="col-md-3">
+	<table class="table table-condensed table-hover">
+		<tr>
+			<th>Name</th>
+			<td><%=@lender.first_name%>&nbsp;<%=@lender.last_name%></td>
+		</tr>
+		<tr>
+			<th>Balance</th>
+			<td>$<%=@lender.balance%></td>
+		</tr>
+	</table>
+</div>
+<div class="col-md-12">
+	<h3>List of people in need of help</h3>
+	<table class="table table-striped table-hover">
+		<tr>
+			<th>Name</th>
+			<th>Reason</th>
+			<th>Description</th>
+			<th>Amount Needed</th>
+			<th>Amount Received</th>
+			<th>Actions</th>
+		</tr>
+
+		<% @borrowers.each do |b| %>
+			<tr>
+				<td><%=b.first_name%> <%=b.last_name%></td>
+				<td><%=b.reason%></td>
+				<td><%=b.description%></td>
+				<td><%=b.amount_needed%></td>
+				<td><%=b.amount_received%></td>
+				<td>
+					<form action="/transactions" method="post">
+						<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+						<input type="hidden" name="borrower_id" value="<%=b.id%>">
+						<input type="number" name="amount" class="form-control lend_button">
+						<button type="submit" class="btn btn-default btn-xs">Lend</button>
+					</form>
+				</td>
+			</tr>
+		<% end %>
+
+	</table>
+	<% if flash[:errors] %>
+		<p class="error"><%=flash[:errors]%></p>
+	<% end %>
+</div>
+<div class="col-md-12">
+	<h3>List of people you've lent money to</h3>
+	<table class="table table-striped table-hover">
+		<tr>
+			<th>Name</th>
+			<th>Reason</th>
+			<th>Description</th>
+			<th>Amount Needed</th>
+			<th>Amount Received</th>
+			<th>Amount Lent</th>
+		</tr>
+
+		<% @transactions.each do |b| %>
+			<tr>
+				<td><%=b.first_name%> <%=b.last_name%></td>
+				<td><%=b.reason%></td>
+				<td><%=b.description%></td>
+				<td><%=b.amount_needed%></td>
+				<td><%=b.amount_received%></td>
+				<td><%=b.amount%></td>
+			</tr>
+		<% end %>
+	</table>
+</div>

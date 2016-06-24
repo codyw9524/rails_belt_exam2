@@ -1,0 +1,26 @@
+<div class="col-md-4">
+	<h2>Log In</h2>
+	<form action="/sessions" method="post">
+		<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+		<div class="form-group">
+			<label for="type">User Type</label>
+			<select id="type" name="type" class="form-control">
+				<option selected>Borrower</option>
+				<option>Lender</option>
+			</select>
+		</div>
+		<div class="form-group">
+			<label for="email">Email</label>
+			<input type="email" id="email" name="email" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="password">Password</label>
+			<input type="password" id="password" name="password" class="form-control">
+		</div>
+		<button type="submit" class="btn btn-default">Log In</button>
+	</form>
+	<a href="/borrowers/new">Don't have an account?  Click here to register</a>
+	<% if flash[:errors] %>
+		<p class="error"><%=flash[:errors]%></p>
+	<% end %>
+</div>
