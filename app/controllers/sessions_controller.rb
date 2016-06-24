@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
 	def new
-		reset_session
+		session[:user_id] == nil
 	end
 	def create
 		if ! params[:type]
