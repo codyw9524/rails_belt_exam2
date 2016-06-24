@@ -11,6 +11,7 @@ class SessionsController < ApplicationController
 				borrower = Borrower.find_by(email: params[:email])
 				if borrower && borrower.authenticate(params[:password])
 					session[:user_id] = borrower.id
+					session[:user_type] = 'borrower'
 					redirect_to "/borrowers/#{borrower.id}"
 				else
 					flash[:errors] = "Invalid Credentials."
@@ -20,6 +21,7 @@ class SessionsController < ApplicationController
 				lender = Lender.find_by(email: params[:email])
 				if lender and lender.authenticate(params[:password])
 					session[:user_id] = lender.id
+					session[:user_type] = 'lender'
 					redirect_to "/lenders/#{lender.id}"
 				else
 					flash[:errors] = "Invalid Credentials."

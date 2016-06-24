@@ -7,6 +7,7 @@ class BorrowersController < ApplicationController
 		borrower["amount_received"] = 0.0
 		if borrower.save
 			session[:user_id] = borrower.id
+			session[:user_type] = 'borrower'
 			redirect_to "/borrowers/#{borrower.id}"
 		else
 			flash[:borrowers] = borrower.errors
