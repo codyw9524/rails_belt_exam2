@@ -24,6 +24,8 @@ default: &default
 development:
   <<: *default
   database: belt_exam2_development
+  username: ubuntu
+  password:
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -58,6 +60,8 @@ development:
 test:
   <<: *default
   database: belt_exam2_test
+  username: ubuntu
+  password:
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -81,5 +85,7 @@ test:
 production:
   <<: *default
   database: belt_exam2_production
+  username: ubuntu
+  password:
   # username: belt_exam2
   # password: <%= ENV['BELT_EXAM2_DATABASE_PASSWORD'] %>
