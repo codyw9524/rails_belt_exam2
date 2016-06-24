@@ -7,7 +7,7 @@ class LendersController < ApplicationController
 			session[:user_id] = lender.id
 			redirect_to "/lenders/#{lender.id}"
 		else
-			flash[:lenders] = lender.errors.full_messages
+			flash[:lenders] = lender.errors
 			redirect_to :back
 		end
 	end

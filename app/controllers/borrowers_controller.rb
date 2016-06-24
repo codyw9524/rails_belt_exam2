@@ -9,7 +9,7 @@ class BorrowersController < ApplicationController
 			session[:user_id] = borrower.id
 			redirect_to "/borrowers/#{borrower.id}"
 		else
-			flash[:borrowers] = borrower.errors.full_messages
+			flash[:borrowers] = borrower.errors
 			redirect_to :back
 		end
 	end
