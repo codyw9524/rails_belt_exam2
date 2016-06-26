@@ -33,10 +33,8 @@ class SessionsController < ApplicationController
 			end
 		end
 	end
-
 	def destroy
 		reset_session
 		redirect_to '/sessions/new'
 	end
-
 end
